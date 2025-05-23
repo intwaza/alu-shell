@@ -1,0 +1,4 @@
+#!/bin/bash
+for dir in */; do
+  chmod a+x "$dir"
+done
