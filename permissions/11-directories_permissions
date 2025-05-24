@@ -1,2 +1,2 @@
 #!/bin/bash
-for dir in *; do if [ -d "$dir" ]; then chmod +x "$dir"; fi; done
+find . -mindepth 1 -maxdepth 1 -type d -exec chmod +x {} \+
