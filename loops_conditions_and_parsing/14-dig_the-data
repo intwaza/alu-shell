@@ -1,13 +1,11 @@
 #!/bin/bash
+# This script parses apache-access.log and counts IP and HTTP status codes occurrences
 
 awk '
 {
     # Extract IP (field 1)
     ip = $1
-    # Extract HTTP status code - field after the request which is inside quotes.
-    # The request field is usually the 6th field onward in logs like:
-    # 127.0.0.1 - - [date] "GET /path HTTP/1.1" 200 ...
-    # So status code is usually the 9th field.
+    # Extract HTTP status code (usually field 9)
     status = $9
     count[ip, status]++
 }
