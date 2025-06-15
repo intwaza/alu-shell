@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 for pid in /proc/[0-9]*; do
     # Read the command name from /proc/[pid]/comm
     if [[ -f "$pid/comm" ]]; then
