@@ -1,0 +1,39 @@
+#!/bin/bash
+
+PID_FILE="/var/run/myscript.pid"
+
+# Write its own PID to the file
+echo $$ > "$PID_FILE"
+
+# Function to cleanup and exit on SIGQUIT or SIGTERM
+cleanup() {
+  rm -f "$PID_FILE"
+  exit 0
+}
+
+# Handle SIGTERM: print message, cleanup, and exit
+term_handler() {
+  echo "I hate the kill command"
+  cleanup
+}
+
+# Handle SIGINT (Ctrl+C): print message but continue running
+int_handler() {
+  echo "Y U no love me?!"
+}
+
+# Handle SIGQUIT: cleanup and exit
+quit_handler() {
+  cleanup
+}
+
+# Trap signals
+trap 'term_handler' SIGTERM
+trap 'int_handler' SIGINT
+trap 'quit_handler' SIGQUIT
+
+# Infinite loop printing the message every 2 seconds
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done

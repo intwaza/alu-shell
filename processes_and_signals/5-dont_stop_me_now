@@ -1,0 +1,7 @@
+#!/bin/bash
+# Find the PID(s) of the process named '4-to_infinity_and_beyond' and kill them
+
+pids=$(pgrep -f 4-to_infinity_and_beyond)
+if [ -n "$pids" ]; then
+  kill $pids
+fi
