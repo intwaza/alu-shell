@@ -1,2 +1,6 @@
 #!/bin/bash
-rev
+# Reads from stdin, reverses each line
+
+while IFS= read -r line; do
+  echo "$line" | rev
+done
