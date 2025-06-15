@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "obase=8; ibase=10; $((5#$(echo $WATER | tr water 01234) + 4#$(echo $STIR | tr stir 0123)))" | bc | tr '01234567' bestchol
+echo $((5#$(echo $WATER | tr water 01234) + 4#$(echo $STIR | tr stir 0123))) | printf '%o\n' $(cat) | tr 01234567 bestchol
