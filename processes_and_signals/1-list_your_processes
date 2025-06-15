@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # This script displays a full list of running processes in a tree-like format, showing parent-child relationships.
-ps -e -f --forest
+ps -a -x -u -f

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2009
 
-ps -eo uid,args | grep bash | grep -v grep
-
+ps -f | grep bash
