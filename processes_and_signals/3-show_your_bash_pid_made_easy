@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Loop through all directories in /proc that represent running processes
+# (each process has its own directory named by its PID)
 for pid in /proc/[0-9]*; do
     # Read the command name from /proc/[pid]/comm
     if [[ -f "$pid/comm" ]]; then

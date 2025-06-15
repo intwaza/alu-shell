@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This is an infinite loop that will run forever
 while true; do
   echo "To infinity and beyond"
   sleep 2

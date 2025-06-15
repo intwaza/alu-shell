@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Define the path to the PID file where the process ID will be stored
 
 PID_FILE="/var/run/my_process.pid"
 PROCESS_SCRIPT="./manage_my_process"  # Adjust path if needed

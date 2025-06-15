@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Define the path to the file that will store the script's PID (Process ID)
 
 PID_FILE="/var/run/myscript.pid"
 
