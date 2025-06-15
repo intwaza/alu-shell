@@ -2,7 +2,7 @@
 # Define the path to the PID file where the process ID will be stored
 
 PID_FILE="/var/run/my_process.pid"
-PROCESS_SCRIPT="./manage_my_process"  # Adjust path if needed
+PROCESS_SCRIPT="$(pwd)/manage_my_process"
 
 start() {
   # Start the manage_my_process script in background
