@@ -1,30 +1,37 @@
 #!/usr/bin/env bash
-# Define the path to the PID file where the process ID will be stored
+# Manages the manage_my_process script by starting, stopping, or restarting it and handling its PID file
 
 PID_FILE="/var/run/my_process.pid"
 PROCESS_SCRIPT="$(pwd)/manage_my_process"
 
 start() {
-  # Start the manage_my_process script in background
+  local silent=$1
   $PROCESS_SCRIPT &
   echo $! > "$PID_FILE"
-  echo "manage_my_process started"
+  if [[ "$silent" != "silent" ]]; then
+    echo "manage_my_process started"
+  fi
 }
 
 stop() {
+  local silent=$1
   if [ -f "$PID_FILE" ]; then
     PID=$(cat "$PID_FILE")
     kill "$PID" 2>/dev/null
     rm -f "$PID_FILE"
-    echo "manage_my_process stopped"
+    if [[ "$silent" != "silent" ]]; then
+      echo "manage_my_process stopped"
+    fi
   else
-    echo "manage_my_process is not running"
+    if [[ "$silent" != "silent" ]]; then
+      echo "manage_my_process is not running"
+    fi
   fi
 }
 
 restart() {
-  stop
-  start
+  stop silent
+  start silent
   echo "manage_my_process restarted"
 }
 
