@@ -1,19 +1,4 @@
 #!/usr/bin/env bash
 # This script parses apache-access.log and counts IP and HTTP status codes occurrences
 
-awk '
-{
-    # Extract IP (field 1)
-    ip = $1
-    # Extract HTTP status code (usually field 9)
-    status = $9
-    count[ip, status]++
-}
-END {
-    for (key in count) {
-        split(key, arr, SUBSEP)
-        ip = arr[1]
-        status = arr[2]
-        print count[key], ip, status
-    }
-}' apache-access.log | sort -nr
+awk '{ print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
